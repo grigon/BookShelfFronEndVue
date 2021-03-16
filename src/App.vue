@@ -1,28 +1,25 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Error :message="errorMessage"/>
+    <payment-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PaymentView from "@/views/PaymentView";
+import Error from "@/components/Error";
+import {ref} from "vue";
+import state from "@/state";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    PaymentView,
+    Error
+  },
+  setup(){
+    return{
+      errorMessage: state.errorMessage,
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
