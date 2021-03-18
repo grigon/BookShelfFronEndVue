@@ -14,6 +14,9 @@ npr
             <h3>Sign up</h3>
           </div>
           <div><strong>User inforamation</strong></div>
+
+          <Message :message="successMessage"></Message>
+
           <div class="form-group">
             <label for="name">Name</label>
             <input id="name"
@@ -72,7 +75,7 @@ npr
 
 
   <div>
-    <pre>{{ model.user }}</pre>
+<!--    <pre>{{ model.user.$model }}</pre>-->
   </div>
 
 </template>
@@ -81,11 +84,12 @@ npr
 import state from "@/state";
 import {reactive} from "@vue/reactivity";
 import ValidationMessage from "@/components/ValidationMessage";
-import config from "@/config";
 import axios from 'axios';
+import Message from "./Message";
 
 export default {
   components: {
+    Message,
     ValidationMessage,
   },
   emits: [
@@ -93,21 +97,29 @@ export default {
   ],
   setup(props, {emit}) {
     const user = reactive(state);
+    const model = state.toModel();
 
     async function onSave() {
-      axios.post(config.server + 'api/users', {
-        user
+      await axios.post('https://localhost:5001/api/users', {
+        userName: user.user.name,
+        email: user.user.email,
+        password: user.user.password,
+        city: user.user.city
       })
           .then((response) => {
+            if(response.statusCode){
+              state.successMessage.value = "Success! Account was created."
+            }
             console.log(response);
           }, (error) => {
-            console.log(error);
+            console.log(error.message);
           });
     }
 
-    const model = state.toModel();
+
 
     return {
+      successMessage: state.successMessage,
       model,
       user,
       onSave,

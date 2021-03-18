@@ -7,8 +7,8 @@
 
 <script>
 import Error from "@/components/Error";
+import Message from "./components/Message";
 import state from "@/state";
-import config from "@/config";
 import MainNavView from "./views/MainNavView";
 import MainPageView from "./views/MainPageView";
 import SignUpForm from "./components/SignUpForm";
@@ -19,7 +19,7 @@ export default {
     MainNavView,
     SignUpForm,
     Error,
-    config
+    Message
   },
   setup(){
     return{

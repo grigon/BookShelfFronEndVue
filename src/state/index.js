@@ -6,6 +6,7 @@ import {ref} from "vue";
 export default {
     user: reactive(new UserModel()),
     errorMessage: ref(""),
+    successMessage: ref(""),
 
     toModel(){
         const rules = {
@@ -13,5 +14,6 @@ export default {
         };
 
         return useVuelidate(rules, this);
-    }
+    },
+
 };
