@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="alert alert-success" v-if="successMessage">{{successMessage}}</div>
+    <div class="alert alert-success" v-if="message">{{message}}</div>
   </div>
 </template>
 
@@ -8,13 +8,13 @@
 import {ref} from 'vue'
 export default {
   props: {
-    successMessage: {
+    message: {
       type: String,
       required: true
     }
   },
   setup(props){
-    console.log(props.successMessage)
+    console.log(props.message)
     return{
 
     };

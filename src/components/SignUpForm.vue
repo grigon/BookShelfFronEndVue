@@ -15,7 +15,7 @@ npr
           </div>
           <div><strong>User inforamation</strong></div>
 
-          <Message :message="successMessage"></Message>
+          <Message :message="successMessage"/>
 
           <div class="form-group">
             <label for="name">Name</label>
@@ -107,7 +107,8 @@ export default {
         city: user.user.city
       })
           .then((response) => {
-            if(response.statusCode){
+            if(response.statusText === "Created"){
+              console.log("Success")
               state.successMessage.value = "Success! Account was created."
             }
             console.log(response);
