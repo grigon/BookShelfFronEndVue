@@ -1,20 +1,25 @@
 <template>
   <div>
     <Error :message="errorMessage"/>
-    <payment-view/>
+    <MainPageView/>
   </div>
 </template>
 
 <script>
-import PaymentView from "@/views/PaymentView";
 import Error from "@/components/Error";
-import {ref} from "vue";
 import state from "@/state";
+import config from "@/config";
+import MainNavView from "./views/MainNavView";
+import MainPageView from "./views/MainPageView";
+import SignUpForm from "./components/SignUpForm";
 
 export default {
   components:{
-    PaymentView,
-    Error
+    MainPageView,
+    MainNavView,
+    SignUpForm,
+    Error,
+    config
   },
   setup(){
     return{
