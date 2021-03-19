@@ -12,12 +12,14 @@ import state from "@/state";
 import MainNavView from "./views/MainNavView";
 import MainPageView from "./views/MainPageView";
 import SignUpForm from "./components/SignUpForm";
+import SignInForm from "./components/SignInForm";
 
 export default {
   components:{
     MainPageView,
     MainNavView,
     SignUpForm,
+    SignInForm,
     Error,
     Message
   },

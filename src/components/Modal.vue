@@ -8,7 +8,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <SignUpForm/>
+          <slot/>
         </div>
       </div>
     </div>
@@ -17,9 +17,14 @@
 
 <script>
 import SignUpForm from "./SignUpForm";
+import SignInForm from "./SignInForm";
+
 export default {
-name: "Modal",
-  components: {SignUpForm}
+  name: "Modal",
+  components: {
+    SignUpForm,
+    SignInForm
+  }
 }
 </script>
 
