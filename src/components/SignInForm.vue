@@ -54,6 +54,7 @@
   </div>
   <div>
   </div>
+  <pre>{{ model.user.$model }}</pre>
 </template>
 
 
@@ -87,10 +88,12 @@ export default {
         password: user.user.password,
       })
           .then((response) => {
-            if (response.statusText === "Created") {
+            if (response.status === 200) {
               console.log("Success")
               state.successMessage.value = "Success! You are logged in."
-              model.user.loggedIn = true;
+              user.user.loggedIn = "true";
+              user.user.AccessToken = response.data.value.token;
+              user.user.RefreshToken = response.data.value.refreshToken;
             }
             console.log(response);
           }, (error) => {

@@ -10,6 +10,7 @@ export default class UserModel {
     loggedIn = ref("");
     AccessToken = ref("");
     RefreshToken = ref("");
+    TokenExpirationTime = ref("");
 
 
     get rules() {
