@@ -7,7 +7,7 @@ export default class UserModel {
     email = ref("");
     password = ref("");
     city = ref("");
-    loggedIn = ref("");
+    loggedIn = ref("false");
     AccessToken = ref("");
     RefreshToken = ref("");
     TokenExpirationTime = ref("");
