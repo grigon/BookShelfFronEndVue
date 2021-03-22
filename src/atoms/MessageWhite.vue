@@ -10,11 +10,11 @@
 
 <script>
 export default {
-  name: "Message",
+  name: "MessageWhite",
   }
 </script>
 
-<style>
+<style scoped>
   .box {
     color: #aaaaaa;
   }

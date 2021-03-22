@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box orange-box">
     I'm in a box. MBSxwbfex ajgrcwx eejhrct3we dcwerxu23ywf zdjyerx3fytwxrd sadxhxqfve zqADQCXRX23TQWC DQthxr3qth d
     mAHSgdbjwae dsahrcgb ewa jhegrcwb  hfgweyfb  fjwehtfuvywfyw3t qhj3re23vx dqyg3rxy3w fwvyerxy3 w ryterwyer v
     ahfdvewyta ahgsrfwe  hagfexy jaydfwevrtywrfyterfwyter ahetxy3uwr  hwtexb qher3x qw eh3xwf3r xvhwdfe
@@ -10,13 +10,15 @@
 
 <script>
 export default {
-  name: "Message",
+  name: "MessageOrange",
   }
 </script>
 
-<style>
-  .box {
-    color: #aaaaaa;
+<style scoped>
+  .orange-box {
+    color: white;
+    background-color: #EF4625;
+    box-shadow: 0 0.5em 1em -0.125em #EF4625;
   }
   p {
     font-size: 0.75rem;
