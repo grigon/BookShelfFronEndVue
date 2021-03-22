@@ -26,12 +26,6 @@ export default {
 
 
     async function logout() {
-      const options = {
-        headers: {'Authorization': 'Bearer ' + user.user.AccessToken}
-      };
-
-      console.log(options.headers)
-
       await axios.get('/api/account/logout',  {
         headers: {
           'Authorization': 'Bearer ' + user.user.AccessToken,
