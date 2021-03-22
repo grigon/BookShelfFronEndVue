@@ -11,6 +11,9 @@ export default {
     message: {
       type: String,
       required: true
+    },
+    style:{
+      type: String
     }
   },
 setup(props){

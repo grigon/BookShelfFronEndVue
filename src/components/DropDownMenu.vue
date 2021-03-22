@@ -5,16 +5,56 @@
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a @click="editProfile" class="dropdown-item" id="editProfile" href="#">Edit profile</a>
+      <a class="dropdown-item" id="conversations" href="#">Conversations</a>
+      <a @click="logout" class="dropdown-item" id="logout" href="#">Logout</a>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import state from "@/state";
+import {reactive} from "@vue/reactivity";
+
 export default {
-name: "DropDownMenu"
+  name: "DropDownMenu",
+  /*  logoutButton: '#logout',*/
+  setup() {
+    const user = reactive(state);
+    const model = state.toModel();
+
+
+    async function logout() {
+      console.log('Bearer ' + user.user.AccessToken)
+      const options = {
+        headers: {'Authorization': 'Bearer ' + user.user.AccessToken}
+      };
+
+      await axios.get('/api/account/logout', {}, {
+        headers: {
+          Authorization: 'Bearer ' + user.user.AccessToken,
+        },}
+        )
+          .then((response) => {
+            if (response.status === 200) {
+              console.log("Success")
+              state.successMessage.value = "Success! You are logged out."
+              user.user.loggedIn = "false";
+              user.user.AccessToken = "";
+              user.user.RefreshToken = "";
+            }
+            console.log(response);
+          }, (error) => {
+            console.log(error.message);
+          });
+    }
+
+
+    return {
+      logout
+    }
+  }
 }
 </script>
 

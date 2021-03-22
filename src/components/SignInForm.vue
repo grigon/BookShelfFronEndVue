@@ -83,7 +83,7 @@ export default {
     const model = state.toModel();
 
     async function onSave() {
-      await axios.post('https://localhost:5001/api/account/login', {
+      await axios.post('/api/account/login', {
         email: user.user.email,
         password: user.user.password,
       })
