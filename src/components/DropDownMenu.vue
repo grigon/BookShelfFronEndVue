@@ -26,26 +26,29 @@ export default {
 
 
     async function logout() {
-      console.log('Bearer ' + user.user.AccessToken)
       const options = {
         headers: {'Authorization': 'Bearer ' + user.user.AccessToken}
       };
 
-      await axios.get('/api/account/logout', {}, {
+      console.log(options.headers)
+
+      await axios.get('/api/account/logout',  {
         headers: {
-          Authorization: 'Bearer ' + user.user.AccessToken,
+          'Authorization': 'Bearer ' + user.user.AccessToken,
         },}
         )
           .then((response) => {
             if (response.status === 200) {
               console.log("Success")
-              state.successMessage.value = "Success! You are logged out."
+              state.successMessage.value = "You are logged out."
               user.user.loggedIn = "false";
               user.user.AccessToken = "";
               user.user.RefreshToken = "";
+              user.user.TokenExpirationTime = "";
             }
             console.log(response);
           }, (error) => {
+            state.successMessage.value = "Failed logged out."
             console.log(error.message);
           });
     }
