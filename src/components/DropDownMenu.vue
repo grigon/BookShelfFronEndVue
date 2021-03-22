@@ -14,6 +14,7 @@
 
 <script>
 import axios from "axios";
+import axiosConfig from "../axiosConfig";
 import state from "@/state";
 import {reactive} from "@vue/reactivity";
 
@@ -26,10 +27,8 @@ export default {
 
 
     async function logout() {
-      await axios.get('/api/account/logout',  {
-        headers: {
-          'Authorization': 'Bearer ' + user.user.AccessToken,
-        },}
+      await axiosConfig.get('/api/account/logout',  {
+        }
         )
           .then((response) => {
             if (response.status === 200) {

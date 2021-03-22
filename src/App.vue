@@ -13,10 +13,6 @@ import MainNavView from "./views/MainNavView";
 import MainPageView from "./views/MainPageView";
 import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
-import {reactive} from "@vue/reactivity";
-import axios from "axios";
-
-const user = reactive(state);
 
 export default {
   components:{
