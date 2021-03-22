@@ -1,6 +1,6 @@
 import {email, helpers, minLength, required} from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
-import {ref} from "vue";
+import {ref, watch} from "vue";
 
 export default class UserModel {
     name = ref("");
@@ -35,6 +35,7 @@ export default class UserModel {
                 minLength: minLength(8)
             }
         }
+
     }
 
     toModel() {
