@@ -54,7 +54,7 @@
   </div>
   <div>
   </div>
-  <pre>{{ model.user.$model }}</pre>
+<!--  <pre>{{ model.user.$model }}</pre>-->
 </template>
 
 

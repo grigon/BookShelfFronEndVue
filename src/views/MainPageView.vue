@@ -1,19 +1,14 @@
 <template>
 <MainNavView/>
-  <pre>{{ $model }}</pre>
+<!--  <pre>{{ $model }}</pre>-->
 </template>
 
 <script>
 import MainNavView from "./MainNavView";
 
 export default {
-components:{
-  MainNavView
-}
+  components:{
+    MainNavView,
+  }
 }
 </script>
-
-
-<style scoped>
-
-</style>
