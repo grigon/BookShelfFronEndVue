@@ -1,7 +1,8 @@
 <template>
   <div>
     <Error :message="errorMessage"/>
-    <MainPageView/>
+    <router-view />
+<!--    <MainPageView/>-->
   </div>
 </template>
 
@@ -13,10 +14,7 @@ import MainNavView from "./views/MainNavView";
 import MainPageView from "./views/MainPageView";
 import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
-import {reactive} from "@vue/reactivity";
-import axios from "axios";
-
-const user = reactive(state);
+import RouterVue from "@/router";
 
 export default {
   components:{
