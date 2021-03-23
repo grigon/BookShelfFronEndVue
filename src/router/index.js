@@ -22,25 +22,27 @@ const routes = [
         component: UserProfile,
         beforeEnter: async function (to, from, next) {
             const user = reactive(state);
-            await axiosConfig.get('/api/users', {}
+            axiosConfig.get(`/api/users/email/${user.user.email}`, {}
             )
                 .then((response) => {
                         if (response.status === 200) {
                             console.log("Success, user retrieved from db")
-                            user.user.name = response.data.value.name;
-                            user.user.city = response.data.value.city;
-                            user.user.photoPath = response.data.value.photoPath;
+                            user.user.name = response.data.userName;
+                            user.user.city = response.data.city;
+                            user.user.photoPath = response.data.photoPath;
                         }
                         console.log(response);
                     }, (error) => {
-                        state.successMessage.value = "Failed refresh Access token."
+                        state.successMessage.value = "Failed to retrieve user form db."
                         user.user.loggedIn = "false";
-                        console.log(error.message) ;
+                        console.log(error.message);
                     }
                 )
-                next()
+            next()
         }
     }
+
+
 ]
 
 const router = createRouter({

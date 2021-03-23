@@ -17,6 +17,7 @@ import axios from "axios";
 import axiosConfig from "../axiosConfig";
 import state from "@/state";
 import {reactive} from "@vue/reactivity";
+import router from "../router";
 
 export default {
   name: "DropDownMenu",
@@ -38,6 +39,7 @@ export default {
               user.user.AccessToken = "";
               user.user.RefreshToken = "";
               user.user.TokenExpirationTime = "";
+              router.push({ name: 'MainPage'});
             }
             console.log(response);
           }, (error) => {

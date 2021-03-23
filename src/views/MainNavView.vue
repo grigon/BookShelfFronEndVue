@@ -1,7 +1,9 @@
 <template xmlns="http://www.w3.org/1999/html">
   <nav class="navbar navbar-expand-lg navbar-light justify-content-between sticky-top">
     <div class="container-fluid">
+      <router-link to="/MainPage" class="dropdown-item" id="editProfile">
       <a alt="BookShelf" class="navbar-brand logo" href="#"/>
+        </router-link>
     </div>
     <div class="container-fluid">
       <form class="form-inline my-2 my-lg-0">

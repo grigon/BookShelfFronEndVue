@@ -67,7 +67,6 @@ import axios from 'axios';
 import Message from "./Message";
 import MainNavView from "../views/MainNavView";
 import Modal from "./Modal";
-import {watch} from "vue";
 import axiosConfig from "../axiosConfig";
 
 export default {

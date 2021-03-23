@@ -1,12 +1,6 @@
 <template>
   <MainNavView/>
   <UserProfileForm/>
-  Dupa
-  Dupa
-  Dupa
-  Dupa
-  Dupa
-  Dupa
 </template>
 
 <script>
