@@ -16,11 +16,13 @@ export default {
 
 <style scoped>
   .box {
+    width: 70%;
     color: #aaaaaa;
+    margin-left: 5%;
   }
   p {
     font-size: 0.75rem;
-    margin-left: 82%;
+    margin-left: 55%;
     margin-top: 2%;
   }
 </style>
