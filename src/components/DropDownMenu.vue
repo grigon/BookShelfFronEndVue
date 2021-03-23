@@ -5,7 +5,7 @@
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a @click="editProfile" class="dropdown-item" id="editProfile" href="#">Edit profile</a>
+      <router-link to="/UserProfile" class="dropdown-item" id="editProfile">Edit profile</router-link>
       <a class="dropdown-item" id="conversations" href="#">Conversations</a>
       <a @click="logout" class="dropdown-item" id="logout" href="#">Logout</a>
     </div>

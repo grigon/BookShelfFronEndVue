@@ -6,6 +6,7 @@ export default class UserModel {
     name = ref("");
     email = ref("");
     password = ref("");
+    photoPath = ref("");
     city = ref("");
     loggedIn = ref("false");
     AccessToken = ref("");
@@ -40,6 +41,8 @@ export default class UserModel {
 
     toModel() {
         return useVuelidate(this.rules, this);
+
+
     }
 
 }
