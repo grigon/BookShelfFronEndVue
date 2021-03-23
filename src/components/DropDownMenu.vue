@@ -5,7 +5,7 @@
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a @click="editProfile" class="dropdown-item" id="editProfile" href="#">Edit profile</a>
+      <router-link to="/UserProfile" class="dropdown-item" id="editProfile">Edit profile</router-link>
       <a class="dropdown-item" id="conversations" href="#">Conversations</a>
       <a @click="logout" class="dropdown-item" id="logout" href="#">Logout</a>
     </div>
@@ -14,6 +14,7 @@
 
 <script>
 import axios from "axios";
+import axiosConfig from "../axiosConfig";
 import state from "@/state";
 import {reactive} from "@vue/reactivity";
 
@@ -26,10 +27,8 @@ export default {
 
 
     async function logout() {
-      await axios.get('/api/account/logout',  {
-        headers: {
-          'Authorization': 'Bearer ' + user.user.AccessToken,
-        },}
+      await axiosConfig.get('/api/account/logout',  {
+        }
         )
           .then((response) => {
             if (response.status === 200) {

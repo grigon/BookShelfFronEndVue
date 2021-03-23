@@ -11,13 +11,12 @@
     </div>
     <div class="container-fluid d-flex justify-content-end">
       <form class="form-inline my-2 my-lg-0">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"
-                :hidden="!user.user.loggedIn"
+        <button v-if="user.user.loggedIn==='false'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"
                 >
           Sign up
         </button>
-        <button type="button" class="btn btn-outline ml-2" data-toggle="modal" data-target="#modalSignIn"
-                :hidden="!user.user.loggedIn">
+        <button v-if="user.user.loggedIn==='false'" type="button" class="btn btn-outline ml-2" data-toggle="modal" data-target="#modalSignIn"
+                >
           Sign in
         </button >
         <DropDownMenu v-if="user.user.loggedIn==='true'"/>

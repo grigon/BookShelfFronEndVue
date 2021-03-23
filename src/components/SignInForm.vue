@@ -1,5 +1,6 @@
 <template>
-  <div class="modal fade" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -66,6 +67,8 @@ import axios from 'axios';
 import Message from "./Message";
 import MainNavView from "../views/MainNavView";
 import Modal from "./Modal";
+import {watch} from "vue";
+import axiosConfig from "../axiosConfig";
 
 export default {
   components: {
@@ -82,6 +85,41 @@ export default {
     const user = reactive(state);
     const model = state.toModel();
 
+    function startTokenWatch() {
+      window.setInterval(() => {
+        checkToken()
+      }, 3000)
+    }
+
+    function checkToken() {
+      if ((new Date(user.user.TokenExpirationTime).getTime() - Date.now()) / 1000 <= 30) {
+        refreshToken()
+      }
+    };
+
+    async function refreshToken() {
+      await axiosConfig.get('/api/account/RefreshAccessToken', {
+            "headers": {
+              "RefreshToken": user.user.RefreshToken
+            }
+          }
+      )
+          .then((response) => {
+            if (response.status === 200) {
+              console.log("Success Access Token Refreshed")
+              user.user.loggedIn = "true";
+              user.user.AccessToken = response.data.value.token;
+              user.user.TokenExpirationTime = response.data.value.expiration;
+            }
+            console.log(response);
+          }, (error) => {
+            state.successMessage.value = "Failed refresh Access token."
+            user.user.loggedIn = "false";
+            console.log(error.message);
+          });
+    }
+
+
     async function onSave() {
       await axios.post('/api/account/login', {
         email: user.user.email,
@@ -94,6 +132,8 @@ export default {
               user.user.loggedIn = "true";
               user.user.AccessToken = response.data.value.token;
               user.user.RefreshToken = response.data.value.refreshToken;
+              user.user.TokenExpirationTime = response.data.value.expiration;
+              startTokenWatch()
             }
             console.log(response);
           }, (error) => {

@@ -1,20 +1,35 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
+import MainPage from "../views/MainPage";
+import UserProfile from "../views/UserProfile";
 import ConversationView from "@/views/ConversationView";
-import MainPageView from "@/views/MainPageView";
+import {reactive} from "@vue/reactivity";
+import axiosConfig from "../axiosConfig";
+import state from "@/state";
 
-const history = createWebHistory();
+const routes = [
+    {
+        path: '/',
+        redirect: '/MainPage',
+        component: MainPage
+    },
+    {
+        path: '/MainPage',
+        name: 'MainPage',
+        component: MainPage
+    },
+    {
+        path: '/Conversation',
+        component: ConversationView
+    },
+
+]
+
 const router = createRouter({
-    history,
-    routes: [
-        {
-            path: '/Conversation',
-            component: ConversationView
-        },
-        {
-            path: '/',
-            component: MainPageView,
-        }
-    ]
-});
+    history: createWebHistory(process.env.BASE_URL),
+    routes
+})
+
+//const history = createWebHistory();
+
 
 export default router;
