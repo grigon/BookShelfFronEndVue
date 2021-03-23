@@ -1,5 +1,6 @@
 <template>
   <MainNavView/>
+  <h2 class="title is-3">Conversation</h2>
   <div class="is-flex-direction-row">
     <div class="block left is-flex-direction-column">
       <div class="block first has-background-light">
@@ -8,7 +9,9 @@
         <MessageWhite/>
         <MessageOrange/>
       </div>
-      <div class="block second">
+      <div class="block second is-flex-direction-column">
+        <h2 class="title is-3">Write message</h2>
+        <Textarea/>
         <ButtonOrange/>
       </div>
     </div>
@@ -24,9 +27,11 @@ import MessageWhite from "../atoms/MessageWhite";
 import MessageOrange from "../atoms/MessageOrange";
 import ButtonOrange from "../atoms/ButtonOrange";
 import ButtonWhite from "../atoms/ButtonWhite";
+import Textarea from "@/atoms/Textarea";
 
 export default {
   components:{
+    Textarea,
     MainNavView,
     MessageWhite,
     MessageOrange,
@@ -37,29 +42,35 @@ export default {
 </script>
 
 <style scoped>
+  h2 {
+    width: 100%;
+  }
   .is-flex-direction-row{
     display: flex;
   }
   .has-background-light{
-    border: 2px #ea3918;
-    border-radius: 1%;
     overflow-y: scroll;
-    height: 65%;
+    height: 55%;
+    padding: 5%;
+    border-radius: 1%;
   }
   .left {
     display: flex;
     width: 50%;
   }
   .right {
-/*    background-color: yellow;*/
+    background-color: yellow;
     height: 200px;
     width: 50%;
   }
-  .first{
-    background-color: aquamarine;
+  .is-flex-direction-column {
+    display: flex;
   }
   .second{
-    background-color: blue;
-    align-self: center;
+    width: 100%;
+    align-items: center;
+  }
+  .title {
+    font-family: 'Yeseva One', cursive;
   }
 </style>

@@ -14,6 +14,9 @@ export default {
     color: white;
     transition-duration: 0.3s;
     link-hover-border: #ec6349;
+    width: auto;
+    align-self: center;
+    margin: 2% 2%;
   }
   .button-orange:hover {
     background-color: #b73b25;
