@@ -16,6 +16,7 @@
       </div>
     </div>
     <div class="block right">
+      <Avatar/>
       <ButtonWhite/>
     </div>
   </div>
@@ -28,9 +29,11 @@ import MessageOrange from "../atoms/MessageOrange";
 import ButtonOrange from "../atoms/ButtonOrange";
 import ButtonWhite from "../atoms/ButtonWhite";
 import Textarea from "@/atoms/Textarea";
+import Avatar from "@/atoms/Avatar";
 
 export default {
   components:{
+    Avatar,
     Textarea,
     MainNavView,
     MessageWhite,

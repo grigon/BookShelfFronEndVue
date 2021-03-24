@@ -21,6 +21,7 @@ export default {
     background-color: #EF4625;
     box-shadow: 0 0.5em 1em -0.125em #EF4625;
     margin-left: 25%;
+    margin-bottom: 5%;
   }
   p {
     font-size: 0.75rem;
