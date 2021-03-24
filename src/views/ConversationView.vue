@@ -16,9 +16,8 @@
       </div>
     </div>
     <div class="block right">
-      <Avatar/>
       <ConversationUser/>
-      <ButtonWhite/>
+      <ButtonWhite class="block-user"/>
     </div>
   </div>
 </template>
@@ -30,13 +29,11 @@ import MessageOrange from "../atoms/MessageOrange";
 import ButtonOrange from "../atoms/ButtonOrange";
 import ButtonWhite from "../atoms/ButtonWhite";
 import Textarea from "@/atoms/Textarea";
-import Avatar from "@/atoms/Avatar";
 import ConversationUser from "@/components/ConversationUser";
 
 export default {
   components:{
     ConversationUser,
-    Avatar,
     Textarea,
     MainNavView,
     MessageWhite,
@@ -66,7 +63,6 @@ export default {
     width: 50%;
   }
   .right {
-    background-color: yellow;
     height: 200px;
     width: 50%;
   }
@@ -85,5 +81,8 @@ export default {
   .submit {
     margin-left: 34%;
     width: 14%;
+  }
+  .block-user {
+    margin-left: 36%;
   }
 </style>
