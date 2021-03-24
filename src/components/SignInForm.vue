@@ -98,7 +98,7 @@ export default {
     };
 
     async function refreshToken() {
-      await axiosConfig.get('/api/account/RefreshAccessToken', {
+      await axiosConfig.get(`/api/account/RefreshAccessToken/${localStorage.getItem("Id")}`, {
             "headers": {
               "RefreshToken": localStorage.getItem("RefreshToken")
             }
@@ -112,6 +112,7 @@ export default {
               user.user.AccessToken = response.data.value.token;
               user.user.TokenExpirationTime = response.data.value.expiration;
               localStorage.setItem("TokenExpirationTime", user.user.TokenExpirationTime);
+              localStorage.setItem("AccessToken", user.user.AccessToken);
             }
             console.log(response);
           }, (error) => {
@@ -138,6 +139,7 @@ export default {
               localStorage.setItem("RefreshToken", user.user.RefreshToken);
               user.user.TokenExpirationTime = response.data.value.expiration;
               localStorage.setItem("TokenExpirationTime", user.user.TokenExpirationTime);
+              localStorage.setItem("Id", response.data.value.id)
               startTokenWatch()
               router.push({ name: 'MainPage'});
             }

@@ -3,6 +3,7 @@ import useVuelidate from "@vuelidate/core";
 import {ref, watch} from "vue";
 
 export default class UserModel {
+    id = ref("");
     name = ref("");
     email = ref("");
     password = ref("");

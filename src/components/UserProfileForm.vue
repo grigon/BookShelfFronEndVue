@@ -52,7 +52,7 @@
       <div class="form-group d-flex justify-content-end">
         <button type="submit"
                 class="btn btn-primary"
-                :disabled="model.user.$invalid">
+               >
           Save
         </button>
       </div>
@@ -81,7 +81,7 @@ export default {
     const model = state.toModel();
 
     async function onSave() {
-      await axiosConfig.put('/api/account/', {
+      await axiosConfig.put(`/api/account`, {
         userName: user.user.name,
         email: user.user.email,
         city: user.user.city,

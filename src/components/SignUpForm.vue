@@ -99,11 +99,14 @@ export default {
         city: user.user.city
       })
           .then((response) => {
+            console.log(response);
             if (response.statusText === "Created") {
               console.log("Success")
+              localStorage.setItem("Id", response.data.id)
+              user.user.id = response.data.id
               state.successMessage.value = "Success! Account was created."
             }
-            console.log(response);
+
           }, (error) => {
             console.log(error.message);
           });

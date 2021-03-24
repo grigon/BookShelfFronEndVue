@@ -25,7 +25,7 @@ const routes = [
         component: UserProfile,
         beforeEnter: async function (to, from, next) {
             const user = reactive(state);
-            axiosConfig.get(`/api/account/current`, {}
+            axiosConfig.get(`/api/users/${localStorage.getItem("Id")}`, {}
             )
                 .then((response) => {
                     console.log(response.data)
@@ -54,7 +54,7 @@ const router = createRouter({
     routes
 })
 
-router.afterEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
     if(user.user.loggedIn === "true"){
         localStorage.setItem("AccessToken", user.user.AccessToken);
         localStorage.setItem("TokenExpirationTime", user.user.TokenExpirationTime);
