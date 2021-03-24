@@ -13,6 +13,5 @@ export default {
 <style scoped>
   .control {
     width: 80%;
-
   }
 </style>

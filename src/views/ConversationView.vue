@@ -11,8 +11,8 @@
       </div>
       <div class="block second is-flex-direction-column">
         <h2 class="title is-3">Write message</h2>
-        <Textarea/>
-        <ButtonOrange/>
+        <Textarea class="message"/>
+        <ButtonOrange class="submit"/>
       </div>
     </div>
     <div class="block right">
@@ -44,11 +44,12 @@ export default {
 <style scoped>
   h2 {
     width: 100%;
+    margin: 3%;
   }
-  .is-flex-direction-row{
+  .is-flex-direction-row {
     display: flex;
   }
-  .has-background-light{
+  .has-background-light {
     overflow-y: scroll;
     height: 55%;
     padding: 5%;
@@ -66,11 +67,17 @@ export default {
   .is-flex-direction-column {
     display: flex;
   }
-  .second{
+  .second {
     width: 100%;
-    align-items: center;
   }
   .title {
     font-family: 'Yeseva One', cursive;
+  }
+  .message {
+    margin-left: 2%;
+  }
+  .submit {
+    margin-left: 34%;
+    width: 14%;
   }
 </style>
