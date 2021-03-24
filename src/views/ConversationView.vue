@@ -31,6 +31,7 @@ import ButtonWhite from "../atoms/ButtonWhite";
 import Textarea from "@/atoms/Textarea";
 import ConversationUser from "@/components/ConversationUser";
 
+
 export default {
   components:{
     ConversationUser,
@@ -40,6 +41,7 @@ export default {
     MessageOrange,
     ButtonOrange,
     ButtonWhite
+
   }
 }
 </script>
