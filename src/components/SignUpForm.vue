@@ -32,7 +32,7 @@
             <div class="form-group">
               <label for="password">Password</label>
               <input id="password"
-                     type="text"
+                     type="password"
                      class="form-control"
                      placeholder=""
                      v-model="model.user.password.$model"

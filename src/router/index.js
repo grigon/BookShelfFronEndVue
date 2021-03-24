@@ -4,6 +4,9 @@ import UserProfile from "../views/UserProfile";
 import {reactive} from "@vue/reactivity";
 import axiosConfig from "../axiosConfig";
 import state from "@/state";
+import SignInForm from "../components/SignInForm"
+
+const user = reactive(state);
 
 const routes = [
     {
@@ -22,9 +25,10 @@ const routes = [
         component: UserProfile,
         beforeEnter: async function (to, from, next) {
             const user = reactive(state);
-            axiosConfig.get(`/api/users/email/${user.user.email}`, {}
+            axiosConfig.get(`/api/account/current`, {}
             )
                 .then((response) => {
+                    console.log(response.data)
                         if (response.status === 200) {
                             console.log("Success, user retrieved from db")
                             user.user.name = response.data.userName;
@@ -49,5 +53,26 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes
 })
+
+router.afterEach((to, from, next) => {
+    if(user.user.loggedIn === "true"){
+        localStorage.setItem("AccessToken", user.user.AccessToken);
+        localStorage.setItem("TokenExpirationTime", user.user.TokenExpirationTime);
+        localStorage.setItem("name", user.user.name)
+        localStorage.setItem("photoPath", user.user.photoPath)
+        localStorage.setItem("city", user.user.city.toString())
+        localStorage.setItem("loggedIn", "true")
+        localStorage.setItem("RefreshToken", user.user.RefreshToken)
+
+    }
+    user.user.AccessToken =  localStorage.getItem("AccessToken")
+    user.user.TokenExpirationTime =  localStorage.getItem("TokenExpirationTime")
+    user.user.name = localStorage.getItem("name")
+    user.user.photoPath = localStorage.getItem("photoPath")
+    user.user.city = localStorage.getItem("city")
+    user.user.loggedIn = localStorage.getItem("loggedIn")
+    user.user.RefreshToken = localStorage.getItem("RefreshToken")
+    next()
+});
 
 export default router

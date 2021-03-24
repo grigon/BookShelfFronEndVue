@@ -37,13 +37,26 @@ export default {
               state.successMessage.value = "You are logged out."
               user.user.loggedIn = "false";
               user.user.AccessToken = "";
+              user.user.email = "";
+              user.user.name = "";
+              user.user.city = "";
+              user.user.password = "";
               user.user.RefreshToken = "";
               user.user.TokenExpirationTime = "";
+              localStorage.setItem("loggedIn", "");
+              localStorage.setItem("city", "");
+              localStorage.setItem("photoPath", "");
+              localStorage.setItem("name", "");
+              localStorage.setItem("RefreshToken", "");
+              localStorage.setItem("TokenExpirationTime", "");
+              localStorage.setItem("AccessToken", "");
               router.push({ name: 'MainPage'});
             }
             console.log(response);
           }, (error) => {
             state.successMessage.value = "Failed logged out."
+            user.user.loggedIn = "";
+            localStorage.setItem("loggedIn", user.user.loggedIn);
             console.log(error.message);
           });
     }
