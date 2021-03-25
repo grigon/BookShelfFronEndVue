@@ -132,6 +132,7 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               console.log("Success")
+              state.successMessage.value = "Success! You are logged in."
               user.user.loggedIn = "true";
               localStorage.setItem("loggedIn", user.user.loggedIn);
               user.user.AccessToken = response.data.value.token;

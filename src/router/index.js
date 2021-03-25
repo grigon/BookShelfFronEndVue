@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import MainPage from "../views/MainPage";
 import UserProfile from "../views/UserProfile";
+import ConversationView from "@/views/ConversationView";
 import {reactive} from "@vue/reactivity";
 import axiosConfig from "../axiosConfig";
 import state from "@/state";
@@ -46,7 +47,9 @@ const routes = [
             next()
         }
     }
-
+        path: '/Conversation',
+        component: ConversationView
+    },
 
 ]
 
@@ -54,7 +57,6 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes
 })
-
 router.beforeEach((to, from, next) => {
     if(user.user.loggedIn === "true"){
         localStorage.setItem("AccessToken", user.user.AccessToken);
@@ -78,3 +80,4 @@ router.beforeEach((to, from, next) => {
 });
 
 export default router
+//const history = createWebHistory();

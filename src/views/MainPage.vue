@@ -1,18 +1,16 @@
 <template>
 <MainNavView/>
+  <pre>{{ $model }}</pre>
 </template>
 
 <script>
 import MainNavView from "./MainNavView";
+import BooksSection from "@/components/BooksSection";
 
 export default {
-components:{
-  MainNavView
-}
+  components:{
+    MainNavView,
+    BooksSection,
+  }
 }
 </script>
-
-
-<style scoped>
-
-</style>
