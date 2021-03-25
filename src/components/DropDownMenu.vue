@@ -34,7 +34,7 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               console.log("Success")
-              state.successMessage.value = "You are logged out."
+              state.successMessage = "You are logged out."
               user.user.loggedIn = "false";
               user.user.AccessToken = "";
               user.user.email = "";
@@ -43,7 +43,7 @@ export default {
               user.user.password = "";
               user.user.RefreshToken = "";
               user.user.TokenExpirationTime = "";
-              localStorage.setItem("loggedIn", "");
+              localStorage.setItem("loggedIn", "false");
               localStorage.setItem("city", "");
               localStorage.setItem("photoPath", "");
               localStorage.setItem("name", "");
@@ -54,9 +54,8 @@ export default {
             }
             console.log(response);
           }, (error) => {
-            state.successMessage.value = "Failed logged out."
-            user.user.loggedIn = "";
-            localStorage.setItem("loggedIn", user.user.loggedIn);
+            state.successMessage = "Failed logged out."
+            localStorage.setItem("loggedIn", "false");
             console.log(error.message);
           });
     }

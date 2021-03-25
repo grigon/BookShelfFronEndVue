@@ -16,4 +16,9 @@ export default {
         return useVuelidate(rules, this);
     },
 
+    clearMessages(){
+        this.errorMessage.value = ""
+        this.successMessage.value = "";
+    }
+
 };

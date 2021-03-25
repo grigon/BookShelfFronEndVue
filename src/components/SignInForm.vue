@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="state.clearMessages()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -19,6 +19,7 @@
                   <div><strong>Please provide access data</strong></div>
                   <br/>
                   <Message :message="successMessage"/>
+                  <Message :errorMessage="errorMessage"/>
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email"
@@ -143,14 +144,16 @@ export default {
               startTokenWatch()
               router.push({ name: 'MainPage'});
             }
-            console.log(response);
           }, (error) => {
+            state.errorMessage.value = "Wrong email or password"
             console.log(error.message);
           });
     }
 
     return {
       successMessage: state.successMessage,
+      errorMessage: state.errorMessage,
+      state,
       model,
       user,
       onSave,
