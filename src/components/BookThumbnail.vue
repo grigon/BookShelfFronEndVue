@@ -9,11 +9,11 @@
       <div class="media">
         <div class="media-left">
           <figure class="star image is-48x48">
-            <img class="starv" v-bind:src="`${star}`">
+            <img class="star" v-bind:src="`${star}`">
           </figure>
         </div>
         <div class="media-content">
-<!--          <p class="title is-4" v-show="message">{{message}}</p>-->
+          <p class="title is-4" v-show="message">{{message}}</p>
           <p class="subtitle is-6" for="book">{{book.title}}</p>
         </div>
       </div>
@@ -23,7 +23,6 @@
 
 <script>
 import { mapActions } from 'vuex';
-/*const imgLink = 'https://i.picsum.photos/id/141/200/300.jpg?hmac=d8Mh3TnTbeViVLDauKiTRsNX8KAY5RGDbXDwEuecPko';*/
 const star = '/img/star.png';
 const aauthor = {name : "marta", title: "blabla"};
 const title = "book title";
@@ -43,10 +42,21 @@ export default {
 </script>
 
 <style scoped>
-/*  .card-image {
-    height: 7%;
-  }*/
   .card {
-    width: 17%;
+    margin: 0.5%;
+    box-shadow: none;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .card:hover {
+    box-shadow: 3px 3px 5px darkgrey;
+    height: 110%;
+    width: 60%;
+  }
+  .star {
+    width: 25%;
+  }
+  .card-content {
+    height: 5.5rem;
   }
 </style>
