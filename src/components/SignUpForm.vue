@@ -32,7 +32,7 @@
             <div class="form-group">
               <label for="password">Password</label>
               <input id="password"
-                     type="text"
+                     type="password"
                      class="form-control"
                      placeholder=""
                      v-model="model.user.password.$model"
@@ -99,11 +99,14 @@ export default {
         city: user.user.city
       })
           .then((response) => {
+            console.log(response);
             if (response.statusText === "Created") {
               console.log("Success")
+              localStorage.setItem("Id", response.data.id)
+              user.user.id = response.data.id
               state.successMessage.value = "Success! Account was created."
             }
-            console.log(response);
+
           }, (error) => {
             console.log(error.message);
           });

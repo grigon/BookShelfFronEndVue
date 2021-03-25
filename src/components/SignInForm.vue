@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="state.clearMessages()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -19,6 +19,7 @@
                   <div><strong>Please provide access data</strong></div>
                   <br/>
                   <Message :message="successMessage"/>
+                  <Message :errorMessage="errorMessage"/>
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email"
@@ -32,7 +33,7 @@
                   <div class="form-group">
                     <label for="password">Password</label>
                     <input id="password"
-                           type="text"
+                           type="password"
                            class="form-control"
                            placeholder=""
                            v-model="model.user.password.$model"
@@ -67,8 +68,8 @@ import axios from 'axios';
 import Message from "./Message";
 import MainNavView from "../views/MainNavView";
 import Modal from "./Modal";
-import {watch} from "vue";
 import axiosConfig from "../axiosConfig";
+import router from "../router";
 
 export default {
   components: {
@@ -81,14 +82,14 @@ export default {
   emits: [
     "onError"
   ],
-  setup(props, {emit}) {
+  setup(props, {}) {
     const user = reactive(state);
     const model = state.toModel();
 
     function startTokenWatch() {
       window.setInterval(() => {
         checkToken()
-      }, 3000)
+      }, 5000)
     }
 
     function checkToken() {
@@ -98,18 +99,21 @@ export default {
     };
 
     async function refreshToken() {
-      await axiosConfig.get('/api/account/RefreshAccessToken', {
+      await axiosConfig.get(`/api/account/RefreshAccessToken/${localStorage.getItem("Id")}`, {
             "headers": {
-              "RefreshToken": user.user.RefreshToken
+              "RefreshToken": localStorage.getItem("RefreshToken")
             }
           }
       )
           .then((response) => {
+            console.log(response)
             if (response.status === 200) {
-              console.log("Success Access Token Refreshed")
+              console.log("Success. Access Token Refreshed")
               user.user.loggedIn = "true";
               user.user.AccessToken = response.data.value.token;
               user.user.TokenExpirationTime = response.data.value.expiration;
+              localStorage.setItem("TokenExpirationTime", user.user.TokenExpirationTime);
+              localStorage.setItem("AccessToken", user.user.AccessToken);
             }
             console.log(response);
           }, (error) => {
@@ -130,22 +134,30 @@ export default {
               console.log("Success")
               state.successMessage.value = "Success! You are logged in."
               user.user.loggedIn = "true";
+              localStorage.setItem("loggedIn", user.user.loggedIn);
               user.user.AccessToken = response.data.value.token;
               user.user.RefreshToken = response.data.value.refreshToken;
+              localStorage.setItem("RefreshToken", user.user.RefreshToken);
               user.user.TokenExpirationTime = response.data.value.expiration;
+              localStorage.setItem("TokenExpirationTime", user.user.TokenExpirationTime);
+              localStorage.setItem("Id", response.data.value.id)
               startTokenWatch()
+              router.push({ name: 'MainPage'});
             }
-            console.log(response);
           }, (error) => {
+            state.errorMessage.value = "Wrong email or password"
             console.log(error.message);
           });
     }
 
     return {
       successMessage: state.successMessage,
+      errorMessage: state.errorMessage,
+      state,
       model,
       user,
       onSave,
+      refreshToken
     };
   }
 }

@@ -17,6 +17,7 @@ import axios from "axios";
 import axiosConfig from "../axiosConfig";
 import state from "@/state";
 import {reactive} from "@vue/reactivity";
+import router from "../router";
 
 export default {
   name: "DropDownMenu",
@@ -33,15 +34,28 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               console.log("Success")
-              state.successMessage.value = "You are logged out."
+              state.successMessage = "You are logged out."
               user.user.loggedIn = "false";
               user.user.AccessToken = "";
+              user.user.email = "";
+              user.user.name = "";
+              user.user.city = "";
+              user.user.password = "";
               user.user.RefreshToken = "";
               user.user.TokenExpirationTime = "";
+              localStorage.setItem("loggedIn", "false");
+              localStorage.setItem("city", "");
+              localStorage.setItem("photoPath", "");
+              localStorage.setItem("name", "");
+              localStorage.setItem("RefreshToken", "");
+              localStorage.setItem("TokenExpirationTime", "");
+              localStorage.setItem("AccessToken", "");
+              router.push({ name: 'MainPage'});
             }
             console.log(response);
           }, (error) => {
-            state.successMessage.value = "Failed logged out."
+            state.successMessage = "Failed logged out."
+            localStorage.setItem("loggedIn", "false");
             console.log(error.message);
           });
     }
