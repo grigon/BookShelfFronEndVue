@@ -9,6 +9,7 @@
             </div>
             <div><strong>User inforamation</strong></div>
             <Message :message="successMessage"/>
+            <Message :message="errorMessage"/>
             <div class="form-group">
               <label for="name">Name</label>
               <input id="name"
@@ -104,7 +105,7 @@ export default {
               console.log("Success")
               localStorage.setItem("Id", response.data.id)
               user.user.id = response.data.id
-              state.successMessage.value = "Success! Account was created."
+              state.successMessage = "Success! Account was created."
             }
 
           }, (error) => {
@@ -114,6 +115,7 @@ export default {
 
     return {
       successMessage: state.successMessage,
+      errorMessage: state.errorMessage,
       model,
       user,
       onSave,

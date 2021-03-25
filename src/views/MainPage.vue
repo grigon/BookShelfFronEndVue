@@ -1,6 +1,5 @@
 <template>
 <MainNavView/>
-  <pre>{{ $model }}</pre>
 </template>
 
 <script>

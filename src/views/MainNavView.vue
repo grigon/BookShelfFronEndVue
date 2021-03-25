@@ -1,7 +1,7 @@
 <template xmlns="http://www.w3.org/1999/html">
   <nav class="navbar navbar-expand-lg navbar-light justify-content-between sticky-top">
     <div class="container-fluid">
-      <router-link to="/MainPage" class="dropdown-item" id="editProfile">
+      <router-link to="/MainPage">
       <a alt="BookShelf" class="navbar-brand logo" href="#"/>
         </router-link>
     </div>
@@ -13,11 +13,11 @@
     </div>
     <div class="container-fluid d-flex justify-content-end">
       <form class="form-inline my-2 my-lg-0">
-        <button v-if="user.user.loggedIn !=='true'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"
+        <button v-if="user.user.loggedIn!=='true'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"
                 >
           Sign up
         </button>
-        <button v-if="user.user.loggedIn !=='true'" type="button" class="btn btn-outline ml-2" data-toggle="modal" data-target="#modalSignIn"
+        <button v-if="user.user.loggedIn!=='true'" type="button" class="btn btn-outline ml-2" data-toggle="modal" data-target="#modalSignIn"
                 >
           Sign in
         </button >
@@ -58,6 +58,7 @@ export default {
 
     return {
       successMessage: state.successMessage,
+      errorMessage: state.errorMessage,
       model,
       user,
     };

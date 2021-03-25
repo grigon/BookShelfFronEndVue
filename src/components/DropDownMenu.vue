@@ -34,29 +34,15 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               console.log("Success")
-              state.successMessage = "You are logged out."
-              user.user.loggedIn = "false";
-              user.user.AccessToken = "";
-              user.user.email = "";
-              user.user.name = "";
-              user.user.city = "";
-              user.user.password = "";
-              user.user.RefreshToken = "";
-              user.user.TokenExpirationTime = "";
-              localStorage.setItem("loggedIn", "false");
-              localStorage.setItem("city", "");
-              localStorage.setItem("photoPath", "");
-              localStorage.setItem("name", "");
-              localStorage.setItem("RefreshToken", "");
-              localStorage.setItem("TokenExpirationTime", "");
-              localStorage.setItem("AccessToken", "");
-              router.push({ name: 'MainPage'});
+              state.clearUserData();
+              router.push({ path: '/MainPage' })
             }
             console.log(response);
           }, (error) => {
-            state.successMessage = "Failed logged out."
-            localStorage.setItem("loggedIn", "false");
+            state.successMessage = "Failed logged out on server."
+            state.clearUserData();
             console.log(error.message);
+            router.push({ path: '/MainPage' })
           });
     }
 

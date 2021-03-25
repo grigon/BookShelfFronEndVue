@@ -26,7 +26,7 @@ instance.interceptors.response.use(function (response) {
 }, function (error) {
     console.log(error.response.data)
     if (error.response.status === 401) {
-        router.push('/MainPage')
+        /*router.push('/MainPage')*/
     }
     return Promise.reject(error)
 })

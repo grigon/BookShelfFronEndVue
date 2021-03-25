@@ -37,11 +37,12 @@ const routes = [
                         }
                         console.log(response);
                     }, (error) => {
-                        state.successMessage.value = "Failed to retrieve user form db."
+                        state.errorMessage.value = "Failed to retrieve user form db."
                         user.user.loggedIn = "false";
                         console.log(error.message);
                     }
                 )
+
             next()
         }
     }
@@ -65,13 +66,14 @@ router.beforeEach((to, from, next) => {
         localStorage.setItem("RefreshToken", user.user.RefreshToken)
 
     }
-    user.user.AccessToken =  localStorage.getItem("AccessToken")
+/*    user.user.AccessToken =  localStorage.getItem("AccessToken")
     user.user.TokenExpirationTime =  localStorage.getItem("TokenExpirationTime")
     user.user.name = localStorage.getItem("name")
     user.user.photoPath = localStorage.getItem("photoPath")
     user.user.city = localStorage.getItem("city")
     user.user.loggedIn = localStorage.getItem("loggedIn")
-    user.user.RefreshToken = localStorage.getItem("RefreshToken")
+    user.user.RefreshToken = localStorage.getItem("RefreshToken")*/
+    state.clearMessages()
     next()
 });
 
