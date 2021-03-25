@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container-chat">
         <h1>MMMMMMMMMMMMMMMMMSDGGGGGGGGGGGGG</h1>
         <div v-if="error" class="error">{{error}}</div>
         <Suspense v-else>
             <template #default>
-                <AllUserChats></AllUserChats>
-
+                
+                
             </template>
             <template #fallback>
                 <AppLoader />
@@ -20,8 +20,10 @@
 
 <script>
 import { onErrorCaptured, ref } from 'vue';
+
 export default {
-    components: {},
+    name : 'MainChatView',
+
 
     setup() {
         const error = ref(null);
@@ -33,12 +35,13 @@ export default {
 
         return {error}
     }
+    
 }
 </script>
 
 <style lang="scss">
-.contaier {
-    width: 80vh;
+.container-chat {
+    width: 100vh;
     height: 100vh;
     display: flex;
     justify-content: center;

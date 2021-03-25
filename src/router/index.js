@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 import MainPage from "../views/MainPage";
 import UserProfile from "../views/UserProfile";
 import ConversationView from "@/views/ConversationView";
+import MainChatView from "../components/Chats/MainChatView.vue";
 import {reactive} from "@vue/reactivity";
 import axiosConfig from "../axiosConfig";
 import state from "@/state";
@@ -21,6 +22,11 @@ const routes = [
         path: '/Conversation',
         component: ConversationView
     },
+    {
+        path: '/Chats',
+        component: MainChatView
+    },
+
 
 ]
 
