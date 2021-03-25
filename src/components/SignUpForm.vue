@@ -93,6 +93,7 @@ export default {
     const model = state.toModel();
 
     async function onSave() {
+      state.clearMessages();
       await axios.post('/api/users', {
         userName: user.user.name,
         email: user.user.email,
@@ -105,6 +106,7 @@ export default {
               console.log("Success")
               localStorage.setItem("Id", response.data.id)
               user.user.id = response.data.id
+              state.clearMessages();
               state.successMessage = "Success! Account was created."
             }
 

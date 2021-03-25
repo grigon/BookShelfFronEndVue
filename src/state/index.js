@@ -17,13 +17,15 @@ export default {
     },
 
     clearMessages(){
-        this.errorMessage.value = ""
-        this.successMessage.value = "";
+        if(this.errorMessage.value)
+            this.errorMessage.value = "";
+        if(this.successMessage.value)
+            this.successMessage.value = "";
     },
 
     clearUserData(){
         const user = this.user;
-        this.successMessage = ""
+        this.successMessage.value = ""
         user.loggedIn = "false";
         user.AccessToken = "";
         user.email = "";

@@ -33,16 +33,18 @@ export default {
         )
           .then((response) => {
             if (response.status === 200) {
+              router.push({ path: '/MainPage' })
               console.log("Success")
               state.clearUserData();
-              router.push({ path: '/MainPage' })
+
             }
             console.log(response);
           }, (error) => {
-            state.successMessage = "Failed logged out on server."
+            router.push({ path: '/MainPage' })
+            state.successMessage.value = "Failed logged out on server."
             state.clearUserData();
             console.log(error.message);
-            router.push({ path: '/MainPage' })
+
           });
     }
 

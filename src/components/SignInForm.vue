@@ -124,6 +124,7 @@ export default {
 
 
     async function onSave() {
+      state.clearMessages();
       await axios.post('/api/account/login', {
         email: user.user.email,
         password: user.user.password,
@@ -131,7 +132,6 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               console.log("Success")
-              state.successMessage.value = "Success! You are logged in."
               user.user.loggedIn = "true";
               localStorage.setItem("loggedIn", user.user.loggedIn);
               user.user.AccessToken = response.data.value.token;
@@ -142,8 +142,11 @@ export default {
               localStorage.setItem("Id", response.data.value.id)
               startTokenWatch()
               router.push({ name: 'MainPage'});
+              state.clearMessages();
+              state.successMessage.value = "Success! You are logged in."
             }
           }, (error) => {
+            state.clearMessages();
             state.errorMessage.value = "Wrong email or password"
             console.log(error.message);
           });
