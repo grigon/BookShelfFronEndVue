@@ -51,7 +51,6 @@ const routes = [
         path: '/Conversation',
         component: ConversationView,
     }
-
 ]
 
 const router = createRouter({

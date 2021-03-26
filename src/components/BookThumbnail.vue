@@ -9,12 +9,15 @@
       <div class="media">
         <div class="media-left">
           <figure class="star image is-48x48">
-            <img class="star" v-bind:src="`${star}`">
+            <img v-bind:src="`${star}`">
+<!--            <div class="star">
+&lt;!&ndash;              <i class="far fa-star"></i>&ndash;&gt;
+            </div>-->
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-4" v-show="message">{{message}}</p>
-          <p class="subtitle is-6" for="book">{{book.title}}</p>
+          <p class="x title is-4">{{author}}</p>
+          <p class="x subtitle is-6" v-show="author">{{title}}</p>
         </div>
       </div>
     </div>
@@ -24,9 +27,9 @@
 <script>
 import { mapActions } from 'vuex';
 const star = '/img/star.png';
-const aauthor = {name : "marta", title: "blabla"};
-const title = "book title";
-const coverage = "/img/book1.jpg";
+const coverage = "/img/algo.jpg";
+const author = "author";
+const  title = "title";
 export default {
   name: "BookThumbnail",
   components: {
@@ -35,7 +38,8 @@ export default {
     return{
       star: star,
       coverage: coverage,
-      book: {},
+      author : author,
+      title: title,
     }
   },
 }
@@ -48,15 +52,24 @@ export default {
     cursor: pointer;
     transition: 0.2s;
   }
-  .card:hover {
-    box-shadow: 3px 3px 5px darkgrey;
-    height: 110%;
-    width: 60%;
-  }
   .star {
-    width: 25%;
+    display: inline-block;
+    width: 23%;
+    transition: 0.2s;
   }
   .card-content {
     height: 5.5rem;
+  }
+  .media-content {
+    width: 80%;
+    margin-right: 0;
+    z-index: 999;
+    display: inline-block;
+  }
+  .star {
+    width: 1.6rem;
+  }
+  .x {
+    font-size: 1rem;
   }
 </style>
