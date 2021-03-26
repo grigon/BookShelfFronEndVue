@@ -90,6 +90,7 @@ export default {
           .then((response) => {
             if (response.status === 200) {
               console.log("Success")
+              state.clearMessages();
               state.successMessage.value = "Success! User information saved."
             }
             console.log(response);
