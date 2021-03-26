@@ -9,7 +9,7 @@
             </div>
             <div><strong>User inforamation</strong></div>
             <Message :message="successMessage"/>
-            <Message :message="errorMessage"/>
+            <Message :errorMessage="errorMessage"/>
             <div class="form-group">
               <label for="name">Name</label>
               <input id="name"
@@ -107,12 +107,13 @@ export default {
               localStorage.setItem("Id", response.data.id)
               user.user.id = response.data.id
               state.clearMessages();
-              state.successMessage = "Success! Account was created."
+              state.successMessage.value = "Success! Account was created."
             }
 
           }, (error) => {
-            console.log(error.message);
-          });
+            state.errorMessage.value = error.response.data[0].description
+            console.log(error.response.data[0].description);
+          })
     }
 
     return {

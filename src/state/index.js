@@ -17,9 +17,7 @@ export default {
     },
 
     clearMessages(){
-        if(this.errorMessage.value)
             this.errorMessage.value = "";
-        if(this.successMessage.value)
             this.successMessage.value = "";
     },
 

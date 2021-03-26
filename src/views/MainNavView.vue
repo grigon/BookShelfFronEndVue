@@ -14,11 +14,11 @@
     <div class="container-fluid d-flex justify-content-end">
       <form class="form-inline my-2 my-lg-0">
         <button v-if="user.user.loggedIn!=='true'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal"
-                >
+               @click="state.clearMessages()" >
           Sign up
         </button>
         <button v-if="user.user.loggedIn!=='true'" type="button" class="btn btn-outline ml-2" data-toggle="modal" data-target="#modalSignIn"
-                >
+                @click="state.clearMessages()" >
           Sign in
         </button >
         <DropDownMenu v-if="user.user.loggedIn==='true'"/>
