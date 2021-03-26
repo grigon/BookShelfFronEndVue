@@ -27,7 +27,7 @@
 <script>
 import { mapActions } from 'vuex';
 const star = '/img/star.png';
-const coverage = "/img/book1.jpg";
+const coverage = "/img/algo.jpg";
 const author = "author";
 const  title = "title";
 export default {

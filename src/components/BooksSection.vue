@@ -15,6 +15,38 @@
       </div>
     </div>
   </div>
+  <div class="box outer is-flex-direction-column">
+    <h2 class="title is-2">Horror</h2>
+    <div class="box secondary">
+      <div class="arrow">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <BookThumbnail class="book-page"/>
+      <BookThumbnail class="book-page"/>
+      <BookThumbnail class="book-page"/>
+      <BookThumbnail class="book-page"/>
+      <BookThumbnail class="book-page"/>
+      <div class="arrow">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>
+  <div class="box outer is-flex-direction-column">
+    <h2 class="title is-2">Travel</h2>
+    <div class="box secondary">
+      <div class="arrow">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <BookThumbnail class="book-page"/>
+      <BookThumbnail class="book-page"/>
+      <BookThumbnail class="book-page"/>
+      <BookThumbnail class="book-page"/>
+      <BookThumbnail class="book-page"/>
+      <div class="arrow">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -31,6 +63,7 @@ export default {
   .outer {
     margin-top: 5%;
     padding: 0;
+    margin-bottom: 2%;
   }
   .arrow {
     color: #b8b7b7;
@@ -61,9 +94,11 @@ export default {
   }
   .book-page:hover {
     box-shadow: 3px 3px 9px darkgrey;
+    z-index: 999;
+  }
+  .arrow:hover, .book-page:hover {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
     transform: scale(1.2);
-    z-index: 999;
   }
 </style>
