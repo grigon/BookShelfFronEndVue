@@ -45,11 +45,11 @@ const routes = [
                 )
             next()
         }
-    }
-        path: '/Conversation',
-        component: ConversationView
     },
-
+    {
+        path: '/Conversation',
+        component: ConversationView,
+    }
 ]
 
 const router = createRouter({

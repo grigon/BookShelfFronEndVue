@@ -1,17 +1,17 @@
 <template>
   <div class="box outer is-flex-direction-column">
     <h2 class="title is-2">Crime</h2>
-    <div class="box secondary is-flex-direction-row">
-      <div class="arrow is-flex-direction-column">
-        <img class="a" v-bind:src="`${leftArrow}`">
+    <div class="box secondary">
+      <div class="arrow">
+        <i class="fas fa-chevron-left"></i>
       </div>
       <BookThumbnail class="book-page"/>
       <BookThumbnail class="book-page"/>
       <BookThumbnail class="book-page"/>
       <BookThumbnail class="book-page"/>
       <BookThumbnail class="book-page"/>
-      <div class="arrow is-flex-direction-column">
-        <img class="a" v-bind:src="`${rightArrow}`">
+      <div class="arrow">
+        <i class="fas fa-chevron-right"></i>
       </div>
     </div>
   </div>
@@ -19,18 +19,10 @@
 
 <script>
 import BookThumbnail from "@/components/BookThumbnail";
-const leftArrow = "/img/left-arrow.png";
-const rightArrow = "/img/next.png"
 export default {
   name: "BooksSection",
   components:{
     BookThumbnail,
-  },
-  data(){
-    return{
-      leftArrow: leftArrow,
-      rightArrow: rightArrow,
-    }
   },
 }
 </script>
@@ -38,20 +30,22 @@ export default {
 <style scoped>
   .outer {
     margin-top: 5%;
-  /*  overflow: hidden;*/
+    padding: 0;
   }
   .arrow {
-    display: flex;
-    justify-content: center;
-    width: 7%;
+    color: #b8b7b7;
+    font-size: 5rem;
+    height: 25rem;
+    width: 3%;
+    cursor: pointer;
   }
-  .a {
-    height: 25%;
+  .fas {
+    margin-top: 10rem;
   }
   .secondary {
     height: 70%;
     display: flex;
-    justify-content: space-between;
+    padding: 0;
   }
   h2 {
     height: 20%;
@@ -59,5 +53,17 @@ export default {
   }
   div {
     box-shadow: none;
+  }
+  .book-page {
+    display: inline-block;
+    width: 17%;
+    margin-left: 1%;
+  }
+  .book-page:hover {
+    box-shadow: 3px 3px 9px darkgrey;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    z-index: 999;
   }
 </style>
